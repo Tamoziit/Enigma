@@ -23,7 +23,12 @@ const Hero = () => {
 	const handleMiniVdClick = () => {
 		setHasClicked(true);
 		setCurrentIndex(upComingVideoIndex);
-	}
+
+		// Ensure playback is triggered
+		nextVideoRef.current?.play().catch((error) => {
+			console.error("Playback error:", error);
+		});
+	};
 
 	const getVideoSrc = (index) => `videos/hero-${index}.mp4`;
 
