@@ -4,13 +4,34 @@ import { TiLocationArrow } from "react-icons/ti";
 import { useWindowScroll } from "react-use";
 import gsap from "gsap";
 
-const navItems = ['Nexus', 'Vault', 'Prologue', 'About', 'Contact'];
+const navItems = [
+	{
+		name: 'Nexus',
+		link: 'hero'
+	},
+	{
+		name: 'Vault',
+		link: 'features'
+	},
+	{
+		name: 'Prologue',
+		link: 'story'
+	},
+	{
+		name: 'About',
+		link: 'about'
+	},
+	{
+		name: 'Contact',
+		link: 'contact'
+	}
+];
 
 const Navbar = () => {
 	const navContainerRef = useRef(null);
 	const audioElementRef = useRef(null);
-	const [isAudioPlaying, setIsAudioPlaying] = useState(false);
-	const [isIndicatorActive, setIsIndicatorActive] = useState(false);
+	const [isAudioPlaying, setIsAudioPlaying] = useState(true);
+	const [isIndicatorActive, setIsIndicatorActive] = useState(true);
 	const [isNavVisible, setIsNavVisible] = useState(true);
 
 	const [lastScrollY, setLastScrollY] = useState(0);
@@ -71,11 +92,11 @@ const Navbar = () => {
 						<div className="hidden md:block">
 							{navItems.map((item) => (
 								<a
-									key={item}
+									key={item.name}
 									className="nav-hover-btn"
-									href={`#${item.toLowerCase()}`}
+									href={`#${item.link.toLowerCase()}`}
 								>
-									{item}
+									{item.name}
 								</a>
 							))}
 						</div>
